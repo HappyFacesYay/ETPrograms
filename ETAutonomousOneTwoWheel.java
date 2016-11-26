@@ -144,7 +144,7 @@ public class ETAutonomousOneTwoWheel extends LinearOpMode{
 
             // keep looping while we are still active, and ALL FOUR motors are running.
             while (opModeIsActive() &&
-                    (robot.leftFrontMotor.isBusy() && robot.rightFrontMotor.isBusy() && robot.leftBackMotor.isBusy() && robot.rightBackMotor.isBusy())) {
+                    (robot.leftFrontMotor.isBusy() && robot.rightFrontMotor.isBusy() )) {
 
                 // adjust relative speed based on heading error.
                 error = getError(angle);

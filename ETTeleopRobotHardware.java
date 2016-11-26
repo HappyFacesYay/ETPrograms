@@ -13,8 +13,6 @@ public class ETTeleopRobotHardware {
     /* Public OpMode members. */
     public DcMotor leftFrontMotor   = null;
     public DcMotor rightFrontMotor  = null;
-    public DcMotor leftBackMotor  = null;
-    public DcMotor rightBackMotor = null;
     public DcMotor armMotor    = null;
     public ModernRoboticsI2cGyro gyro    = null;                    //
     //public Servo leftClaw    = null;
@@ -40,29 +38,22 @@ public class ETTeleopRobotHardware {
 
         // Define and Initialize Motors
         leftFrontMotor   = hwMap.dcMotor.get("left_front_drive");
-        rightBackMotor  = hwMap.dcMotor.get("right_front_drive");
-        leftBackMotor = hwMap.dcMotor.get("left_back_drive");
-        rightBackMotor = hwMap.dcMotor.get("right_back_drive");
+        rightFrontMotor  = hwMap.dcMotor.get("right_front_drive");
         //armMotor    = hwMap.dcMotor.get("left_arm");
         gyro = (ModernRoboticsI2cGyro)hwMap.gyroSensor.get("gyro");
         //leftFrontMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         //rightFrontMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
-        //leftBackMotor.setDirection(DcMotor.Direction.FORWARD);
-        //rightBackMotor.setDirection(DcMotor.Direction.FORWARD);
+
 
         // Set all motors to zero power
         leftFrontMotor.setPower(0.0);
         rightFrontMotor.setPower(0.0);
-        leftBackMotor.setPower(0.0);
-        rightBackMotor.setPower(0.0);
         //armMotor.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightFrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        leftBackMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rightBackMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
