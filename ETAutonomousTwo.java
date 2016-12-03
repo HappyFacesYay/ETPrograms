@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.etrobot;
 
-
+/**
+ * Created by megan on 11/29/2016.
+ */
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -11,8 +13,8 @@ import com.qualcomm.robotcore.util.Range;
 /**
  * Created by megan on 11/8/2016.
  */
-@Autonomous(name="ET Autonomous Drive by Gyro: Capball", group="ET Robot")
-public class ETAutonomousOneTwoWheel extends LinearOpMode{
+@Autonomous(name="ET Autonomous Drive by Gyro: Parking", group="ET Robot")
+public class ETAutonomousTwo extends LinearOpMode{
     /* Declare OpMode members. */
     ETTeleopRobotHardware robot   = new ETTeleopRobotHardware();   // Use a Pushbot's hardware
     ModernRoboticsI2cGyro gyro    = null;                    // Additional Gyro device
@@ -78,8 +80,10 @@ public class ETAutonomousOneTwoWheel extends LinearOpMode{
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         // Put a hold after each turn
+        gyroDrive (DRIVE_SPEED, 1.0, 0.0); //Drive FWD 1 inch
+        gyroTurn(TURN_SPEED, -45.0);  //Turn CCW to -45 Degrees
         gyroDrive(DRIVE_SPEED, 48.0, 0.0);    // Drive FWD 48 inches
-        gyroTurn( TURN_SPEED, -45.0);         // Turn  CCW to -45 Degrees
+        gyroTurn( TURN_SPEED, -90.0);         // Turn  CCW to -45 Degrees
         gyroDrive (DRIVE_SPEED, 48.0, 0.0);   //Drive FWD 48 inches
         //gyroHold( TURN_SPEED, -45.0, 0.5);    // Hold -45 Deg heading for a 1/2 second
         //gyroTurn( TURN_SPEED,  45.0);         // Turn  CW  to  45 Degrees
@@ -306,6 +310,7 @@ public class ETAutonomousOneTwoWheel extends LinearOpMode{
     }
 
 }
+
 
 
 

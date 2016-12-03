@@ -39,7 +39,7 @@ public class ETTeleopRobotHardware {
         // Define and Initialize Motors
         leftFrontMotor   = hwMap.dcMotor.get("left_front_drive");
         rightFrontMotor  = hwMap.dcMotor.get("right_front_drive");
-        //armMotor    = hwMap.dcMotor.get("left_arm");
+        armMotor    = hwMap.dcMotor.get("left_arm");
         gyro = (ModernRoboticsI2cGyro)hwMap.gyroSensor.get("gyro");
         //leftFrontMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         //rightFrontMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
@@ -48,13 +48,13 @@ public class ETTeleopRobotHardware {
         // Set all motors to zero power
         leftFrontMotor.setPower(0.0);
         rightFrontMotor.setPower(0.0);
-        //armMotor.setPower(0);
+        armMotor.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightFrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        //armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        armMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
        // leftClaw = hwMap.servo.get("left_hand");
