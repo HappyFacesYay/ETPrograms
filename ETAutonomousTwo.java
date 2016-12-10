@@ -80,11 +80,13 @@ public class ETAutonomousTwo extends LinearOpMode{
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         // Put a hold after each turn
-        gyroDrive (DRIVE_SPEED, 1.0, 0.0); //Drive FWD 1 inch
-        gyroTurn(TURN_SPEED, -45.0);  //Turn CCW to -45 Degrees
-        gyroDrive(DRIVE_SPEED, 48.0, 0.0);    // Drive FWD 48 inches
-        gyroTurn( TURN_SPEED, -90.0);         // Turn  CCW to -45 Degrees
-        gyroDrive (DRIVE_SPEED, 48.0, 0.0);   //Drive FWD 48 inches
+        gyroDrive (DRIVE_SPEED, 20.0, 0.0); //Drive FWD 1 inch
+        //gyroTurn(TURN_SPEED, -45.0);  //Turn CCW to -45 Degrees
+        //gyroHold( TURN_SPEED, -45.0, 0.5);    // Hold -45 Deg heading for a 1/2 second
+        //gyroDrive(DRIVE_SPEED, 10.0, 0.0);    // Drive FWD 48 inches
+        //gyroTurn( TURN_SPEED, -90.0);         // Turn  CCW to -90 Degrees
+        //gyroHold( TURN_SPEED, -90.0, 0.5);    // Hold -90 Deg heading for a 1/2 second
+        //gyroDrive (DRIVE_SPEED, 48.0, 0.0);   //Drive FWD 48 inches
         //gyroHold( TURN_SPEED, -45.0, 0.5);    // Hold -45 Deg heading for a 1/2 second
         //gyroTurn( TURN_SPEED,  45.0);         // Turn  CW  to  45 Degrees
         //gyroHold( TURN_SPEED,  45.0, 0.5);    // Hold  45 Deg heading for a 1/2 second
@@ -131,7 +133,7 @@ public class ETAutonomousTwo extends LinearOpMode{
             // Determine new target position, and pass to motor controller
             moveCounts = (int)(distance * COUNTS_PER_INCH);
             newLeftFrontTarget = robot.leftFrontMotor.getCurrentPosition() + moveCounts;
-            newRightFrontTarget = robot.rightFrontMotor.getCurrentPosition() + moveCounts;
+            newRightFrontTarget = robot.rightFrontMotor.getCurrentPosition() - moveCounts;
 
             // Set Target and Turn On RUN_TO_POSITION
             robot.leftFrontMotor.setTargetPosition(newLeftFrontTarget);
@@ -267,7 +269,7 @@ public class ETAutonomousTwo extends LinearOpMode{
         else {
             steer = getSteer(error, PCoeff);
             rightSpeed  = speed * steer;
-            leftSpeed   = -rightSpeed;
+            leftSpeed   = rightSpeed;
         }
 
         // Send desired speeds to motors.
@@ -292,8 +294,11 @@ public class ETAutonomousTwo extends LinearOpMode{
 
         double robotError;
 
-        // calculate error in -179 to +180 range  (
-        robotError = targetAngle - gyro.getIntegratedZValue();
+        // calculate error in -179 to +180 range(
+        double zVal = gyro.getIntegratedZValue();
+        telemetry.addData("Z-value", "%5.2f", zVal);
+
+        robotError = targetAngle - zVal;
         while (robotError > 180)  robotError -= 360;
         while (robotError <= -180) robotError += 360;
         return robotError;
@@ -306,7 +311,7 @@ public class ETAutonomousTwo extends LinearOpMode{
      * @return
      */
     public double getSteer(double error, double PCoeff) {
-        return Range.clip(error * PCoeff, -1, 1);
+        return -Range.clip(error * PCoeff, -1, 1);
     }
 
 }

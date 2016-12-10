@@ -35,7 +35,7 @@ public class ETTeleopFourWheel extends PushbotTeleopTank_Iterative {
 
 
         robot.leftFrontMotor.setPower(leftFront);
-        robot.rightFrontMotor.setPower(rightFront);
+        robot.rightFrontMotor.setPower(-rightFront);
 
         //detect if B button is pressed
         //find out previous state of armMotor (at rest or running)

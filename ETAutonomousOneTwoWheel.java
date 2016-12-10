@@ -139,7 +139,7 @@ public class ETAutonomousOneTwoWheel extends LinearOpMode{
             // start motion.
             speed = Range.clip(Math.abs(speed), 0.0, 1.0);
             robot.leftFrontMotor.setPower(speed);
-            robot.rightFrontMotor.setPower(speed);
+            robot.rightFrontMotor.setPower(-speed);
 
 
             // keep looping while we are still active, and ALL FOUR motors are running.
@@ -166,7 +166,7 @@ public class ETAutonomousOneTwoWheel extends LinearOpMode{
                 }
 
                 robot.leftFrontMotor.setPower(leftFrontSpeed);
-                robot.rightFrontMotor.setPower(rightFrontSpeed);
+                robot.rightFrontMotor.setPower(-rightFrontSpeed);
 
                 // Display drive status for the driver.
                 telemetry.addData("Err/St",  "%5.1f/%5.1f",  error, steer);
@@ -268,7 +268,7 @@ public class ETAutonomousOneTwoWheel extends LinearOpMode{
 
         // Send desired speeds to motors.
         robot.leftFrontMotor.setPower(leftSpeed);
-        robot.rightFrontMotor.setPower(rightSpeed);
+        robot.rightFrontMotor.setPower(-rightSpeed);
 
         // Display it for the driver.
         telemetry.addData("Target", "%5.2f", angle);
