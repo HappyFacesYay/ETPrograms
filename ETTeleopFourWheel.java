@@ -28,6 +28,8 @@ public class ETTeleopFourWheel extends PushbotTeleopTank_Iterative {
     public void loop() {
         double leftFront;
         double rightFront;
+        double forwardArm;
+
 
         // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
         leftFront = -gamepad1.left_stick_y;
@@ -37,22 +39,23 @@ public class ETTeleopFourWheel extends PushbotTeleopTank_Iterative {
         robot.leftFrontMotor.setPower(leftFront);
         robot.rightFrontMotor.setPower(-rightFront);
 
-        //detect if B button is pressed
+        forwardArm = -gamepad2.left_stick_y;
+
+
+        robot.armMotor.setPower(forwardArm);
+           //detect if B button is pressed
         //find out previous state of armMotor (at rest or running)
         //toggle armMotor (if at rest, run; if running, stop)
         //adjust power of 2.0 as needed
 
-        if (gamepad1.a){
-            if (isArmMotorRunning){
-                robot.armMotor.setPower(0.0);
-                isArmMotorRunning = false;
-
-            }else {
-                robot.armMotor.setPower(2.0);
-                isArmMotorRunning = true;
+ = true;,
 
             }
         }
+        if (gamepad2.y){
+            robot.armMotor.setPower(-10);
+            isArmMotorRunning = true;
+        }*/
 
         // Send telemetry message to signify robot running;
         telemetry.addData("left_front",  "%.2f", leftFront);
