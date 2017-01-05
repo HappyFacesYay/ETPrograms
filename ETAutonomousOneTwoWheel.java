@@ -78,9 +78,9 @@ public class ETAutonomousOneTwoWheel extends LinearOpMode{
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         // Put a hold after each turn
-        gyroDrive(DRIVE_SPEED, 48.0, 0.0);    // Drive FWD 48 inches
+        gyroDrive(DRIVE_SPEED, 24.0, 0.0);    // Drive FWD 24 inches
         gyroTurn( TURN_SPEED, -45.0);         // Turn  CCW to -45 Degrees
-        gyroDrive (DRIVE_SPEED, 48.0, 0.0);   //Drive FWD 48 inches
+        gyroDrive (DRIVE_SPEED, 24.0, 0.0);   //Drive FWD 48 inches
         //gyroHold( TURN_SPEED, -45.0, 0.5);    // Hold -45 Deg heading for a 1/2 second
         //gyroTurn( TURN_SPEED,  45.0);         // Turn  CW  to  45 Degrees
         //gyroHold( TURN_SPEED,  45.0, 0.5);    // Hold  45 Deg heading for a 1/2 second
@@ -127,7 +127,7 @@ public class ETAutonomousOneTwoWheel extends LinearOpMode{
             // Determine new target position, and pass to motor controller
             moveCounts = (int)(distance * COUNTS_PER_INCH);
             newLeftFrontTarget = robot.leftFrontMotor.getCurrentPosition() + moveCounts;
-            newRightFrontTarget = robot.rightFrontMotor.getCurrentPosition() + moveCounts;
+            newRightFrontTarget = robot.rightFrontMotor.getCurrentPosition() - moveCounts;
 
             // Set Target and Turn On RUN_TO_POSITION
             robot.leftFrontMotor.setTargetPosition(newLeftFrontTarget);

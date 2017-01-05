@@ -47,15 +47,11 @@ public class ETTeleopFourWheel extends PushbotTeleopTank_Iterative {
         //find out previous state of armMotor (at rest or running)
         //toggle armMotor (if at rest, run; if running, stop)
         //adjust power of 2.0 as needed
+        if (gamepad2.a) robot.armMotor.setPower(0);
 
- = true;,
 
-            }
-        }
-        if (gamepad2.y){
-            robot.armMotor.setPower(-10);
-            isArmMotorRunning = true;
-        }*/
+
+
 
         // Send telemetry message to signify robot running;
         telemetry.addData("left_front",  "%.2f", leftFront);
