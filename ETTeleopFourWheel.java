@@ -11,7 +11,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.PushbotTeleopTank_
  */
 @TeleOp(name="Robot: Teleop ET", group="ET Robot")
 public class ETTeleopFourWheel extends PushbotTeleopTank_Iterative {
-    ETTeleopRobotHardware robot       = new ETTeleopRobotHardware(); // use the class created to define a Pushbot's hardware
+    SNRobotHardware robot       = new SNRobotHardware(); // use the class created to define a Pushbot's hardware
     boolean isArmMotorRunning = false;
 
     @Override

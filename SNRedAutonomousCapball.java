@@ -75,8 +75,8 @@ public void runOpMode() {
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         // Put a hold after each turn
-        gyroDrive(DRIVE_SPEED, 29.0, 0.0);    // Drive FWD 24 inches
-        gyroTurn( TURN_SPEED, 135.0);         // Turn  CCW to -45 Degrees
+        gyroDrive(DRIVE_SPEED, 24.0, 0.0);    // Drive FWD 24 inches
+        gyroTurn( TURN_SPEED, 100.0);         // Turn  CCW to -45 Degrees
         gyroDrive (DRIVE_SPEED, 30.0, 135.0);   //Drive FWD 48 inches
         //gyroHold( TURN_SPEED, -45.0, 30.0);    // Hold -45 Deg heading for a 1/2 second
         // gyroTurn( TURN_SPEED,  -135.0);         // Turn  CW  to  45 Degrees
