@@ -79,17 +79,21 @@ public class SNRedAutonomousParkingParticles extends LinearOpMode{
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         // Put a hold after each turn
+        sleep (11000);
         gyroDrive(DRIVE_SPEED, 15.0, 0.0);    // Drive FWD 24 inches
         gyroTurn( TURN_SPEED, 90.0);         // Turn  CCW to -45 Degrees
-        gyroDrive (DRIVE_SPEED, 24.0, 90.0);   //Drive FWD 48 inches
+        gyroDrive (DRIVE_SPEED, 18.0, 90.0);   //Drive FWD 48 inches
         //gyroHold( TURN_SPEED, -45.0, 30.0);    // Hold -45 Deg heading for a 1/2 second
         gyroTurn( TURN_SPEED,  135.0);         // Turn  CW  to  45 Degrees
         //gyroHold( TURN_SPEED,  45.0, 0.5);    // Hold  45 Deg heading for a 1/2 second
         //gyroTurn( TURN_SPEED,   0.0);         // Turn  CW  to   0 Degrees
         //gyroHold( TURN_SPEED,   0.0, 1.0);    // Hold  0 Deg heading for a 1 second
-        gyroDrive(CLIMB_SPEED,30.0, 135.0);    // Drive REV 48 inches
+        gyroDrive(CLIMB_SPEED,15.0, 135.0);    // Drive REV 48 inches
         //gyroHold( TURN_SPEED,   0.0, 0.5);    // Hold  0 Deg heading for a 1/2 second
-        robot.armMotor.setPower(-10.0);
+        robot.armMotor.setPower(-0.7);
+        sleep (3000);
+        gyroDrive(CLIMB_SPEED, 10.0, 135);
+
 
         telemetry.addData("Path", "Complete");
         telemetry.update();

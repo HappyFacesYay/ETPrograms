@@ -24,6 +24,7 @@ static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_
 // The can/should be tweaked to suite the specific robot drive train.
 static final double     DRIVE_SPEED             = 0.7;     // Nominal speed for better accuracy.
 static final double     TURN_SPEED              = 0.5;     // Nominal half speed for better accuracy.
+static final double     CLIMB_SPEED             = 0.9;
 
 static final double     HEADING_THRESHOLD       = 1 ;      // As tight as we can make it with an integer gyro
 static final double     P_TURN_COEFF            = 0.1;     // Larger is more responsive, but also less stable
@@ -76,14 +77,17 @@ public void runOpMode() {
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         // Put a hold after each turn
         gyroDrive(DRIVE_SPEED, 24.0, 0.0);    // Drive FWD 24 inches
-        gyroTurn( TURN_SPEED, 100.0);         // Turn  CCW to -45 Degrees
-        gyroDrive (DRIVE_SPEED, 30.0, 135.0);   //Drive FWD 48 inches
+        gyroDrive(DRIVE_SPEED, -12.0, 0.0);
+        gyroTurn( TURN_SPEED, 90.0);         // Turn  CCW to -45 Degrees
+        gyroDrive (DRIVE_SPEED, 13.0, 90.0);   //Drive FWD 48 inches
         //gyroHold( TURN_SPEED, -45.0, 30.0);    // Hold -45 Deg heading for a 1/2 second
-        // gyroTurn( TURN_SPEED,  -135.0);         // Turn  CW  to  45 Degrees
+        gyroTurn( TURN_SPEED, 135.0);         // Turn  CW  to  45 Degrees
         //gyroHold( TURN_SPEED,  45.0, 0.5);    // Hold  45 Deg heading for a 1/2 second
         //gyroTurn( TURN_SPEED,   0.0);         // Turn  CW  to   0 Degrees
         //gyroHold( TURN_SPEED,   0.0, 1.0);    // Hold  0 Deg heading for a 1 second
-        //gyroDrive(DRIVE_SPEED,15.0, -135.0);    // Drive REV 48 inches
+        gyroDrive(CLIMB_SPEED,10.0, 135.0);    // Drive REV 48 inches
+        sleep (3000);
+        gyroDrive (CLIMB_SPEED, 10.0, 135.0);
         //gyroHold( TURN_SPEED,   0.0, 0.5);    // Hold  0 Deg heading for a 1/2 second
 
         telemetry.addData("Path", "Complete");
