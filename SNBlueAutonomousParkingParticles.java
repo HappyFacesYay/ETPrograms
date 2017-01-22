@@ -92,10 +92,9 @@ public class SNBlueAutonomousParkingParticles extends LinearOpMode{
         //gyroHold( TURN_SPEED,   0.0, 1.0);    // Hold  0 Deg heading for a 1 second
         gyroDrive(CLIMB_SPEED,15.0, -135.0);    // Drive REV 48 inches
         //gyroHold( TURN_SPEED,   0.0, 0.5);    // Hold  0 Deg heading for a 1/2 second
-        robot.armMotor.setPower(-0.7);
         sleep (3000);
         gyroDrive(CLIMB_SPEED, 10.0, -135.0);
-
+        robot.armMotor.setPower(-0.7);
 
 
 
